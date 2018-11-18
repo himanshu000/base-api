@@ -1,0 +1,7 @@
+**/**/dist
+**/**/coverage
+**/**/workdir
+**/**/test-results*.xml
+**/**/node_modules
+**/**/logs
+**/**/.vscode  
