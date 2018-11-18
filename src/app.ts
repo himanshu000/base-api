@@ -1,12 +1,14 @@
 import * as bodyParser from 'body-parser';
-import { NextFunction, Request, Response } from 'express';
-import express = require('express');
+import { Application, NextFunction, Request, Response } from 'express';
+import { inject, injectable } from 'inversify';
+import { InjectionToken } from './injection-token';
 
+@injectable()
 export class App {
-    public expressApp: express.Application;
+    public expressApp: Application;
 
-    constructor() {
-        this.expressApp = express();
+    constructor(@inject(InjectionToken.ExpressApplicationToken) expressApp: Application) {
+        this.expressApp = expressApp;
         this.configure();
     }
 
@@ -43,3 +45,5 @@ export class App {
         this.expressApp.use('/', (req, res) => res.send('Hello World!'));
     }
 }
+
+export const AppToken = Symbol('App');

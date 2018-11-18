@@ -15,7 +15,9 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",

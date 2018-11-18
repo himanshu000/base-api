@@ -1,5 +1,7 @@
 import * as http from 'http';
-import { App } from './app';
+import 'reflect-metadata';
+import { App, AppToken } from './app';
+import { container } from './inversify.config';
 
 export class Server {
     private port: number;
@@ -11,7 +13,7 @@ export class Server {
     }
 
     public start() {
-        const app = new App();
+        const app = container.get<App>(AppToken);
         const httpServer = http.createServer(app.expressApp);
         httpServer.listen(this.port);
         httpServer.on('error', (err) => {
